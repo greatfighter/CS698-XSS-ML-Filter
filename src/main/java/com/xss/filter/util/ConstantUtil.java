@@ -7,15 +7,16 @@ import java.util.regex.Pattern;
 
 public class ConstantUtil {
 
-    public static final List<Pattern> FILTER_PATTERNS = Collections.unmodifiableList(
-        Arrays.asList(
+    private static List<Pattern> filterPatterns;
+    static {
+        initializePatterns(Arrays.asList(
 
             // Avoid common html tags
             Pattern.compile("(<input(.*?)></input>|<input(.*)/>)", Pattern.CASE_INSENSITIVE),
             Pattern.compile("<span(.*?)</span>", Pattern.CASE_INSENSITIVE),
             Pattern.compile("<div(.*)</div>", Pattern.CASE_INSENSITIVE),
             Pattern.compile("<style>(.*?)</style>", Pattern.CASE_INSENSITIVE),
-            //Avoid onload= expressions
+            // Avoid onload= expressions
             Pattern.compile("onload(.*?)=",
                 Pattern.CASE_INSENSITIVE | Pattern.MULTILINE | Pattern.DOTALL),
             // Avoid anything between script tags
@@ -39,7 +40,14 @@ public class ConstantUtil {
             Pattern.compile("vbscript:", Pattern.CASE_INSENSITIVE)
 
         ));
+    }
 
-    public static final String EMPTY = "";
+        public static final List<Pattern> FILTER_PATTERNS = Collections.unmodifiableList(filterPatterns);
+
+        public static final String EMPTY = "";
+    
+        public static void initializePatterns(List<Pattern> patterns) {
+            filterPatterns = patterns;
+        }
 
 }

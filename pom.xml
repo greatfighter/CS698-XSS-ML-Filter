@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.greatfighter</groupId>
-    <artifactId>xss.filter</artifactId>
+    <artifactId>xss.ml.filter</artifactId>
     <version>2.0.0</version>
     <name>Xss ML Filter</name>
     <description>Filter the cross-site scripting for Controller/RestController request with embedded ML model.
@@ -38,6 +38,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
         </dependency>
     </dependencies>
 
