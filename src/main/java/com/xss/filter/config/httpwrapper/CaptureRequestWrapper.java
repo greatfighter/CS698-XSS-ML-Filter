@@ -15,7 +15,6 @@ import java.util.Objects;
  * logic in #ransackXss method in CaptureRequestWrapper, CustomXssFilter use this class for remove
  * xss in request.
  *
- * @author Bhushan Uniyal.
  */
 public class CaptureRequestWrapper extends HttpServletRequestWrapper {
 

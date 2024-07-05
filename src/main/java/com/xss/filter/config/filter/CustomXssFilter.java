@@ -2,6 +2,8 @@ package com.xss.filter.config.filter;
 
 import com.xss.filter.annotation.XssFilter;
 import com.xss.filter.config.httpwrapper.CaptureRequestWrapper;
+import com.xss.filter.service.LocalMLService;
+import com.xss.filter.service.OpenAIService;
 import com.xss.filter.service.RansackXssService;
 import com.xss.filter.service.ServletRequestXssFilterManager;
 import jakarta.servlet.*;

@@ -50,4 +50,8 @@ public class ConstantUtil {
             filterPatterns = patterns;
         }
 
+        public static void updatePatterns(List<Pattern> newPatterns) {
+            filterPatterns = newPatterns;
+        }
+
 }

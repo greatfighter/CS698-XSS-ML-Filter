@@ -2,6 +2,8 @@ package com.xss.filter.config;
 
 import com.xss.filter.annotation.XssFilter;
 import com.xss.filter.config.filter.CustomXssFilter;
+import com.xss.filter.service.LocalMLService;
+import com.xss.filter.service.OpenAIService;
 import com.xss.filter.service.RansackXssService;
 import com.xss.filter.service.ServletInputStreamXssFilterService;
 import com.xss.filter.service.ServletRequestXssFilterManager;
@@ -9,6 +11,7 @@ import com.xss.filter.service.impl.DefaultRansackXssServiceImpl;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
@@ -27,6 +30,7 @@ import java.util.*;
  *
  */
 
+@Configuration
 @Component
 @DependsOn("requestMappingHandlerMapping")
 public class XssFilterConfig {
@@ -70,6 +74,18 @@ public class XssFilterConfig {
         ArrayList<ServletInputStreamXssFilterService> servletInputStreamXssFilterServices = new ArrayList<>();
         servletInputStreamXssFilterServices.add((servletInputStreamXssJsonFilterServiceImpl));
         return servletInputStreamXssFilterServices;
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public LocalMLService localMLService() {
+        return new LocalMLService();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    public OpenAIService openAIService() {
+        return new OpenAIService();
     }
 
 
